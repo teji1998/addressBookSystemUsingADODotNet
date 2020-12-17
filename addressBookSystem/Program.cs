@@ -27,7 +27,9 @@ namespace addressBookSystem
             //repo.ObtainingDataFromDatabase();
             model.City = "Mumbai";
             model.State = "Maharashtra";
-            repo.RetrieveDataByCityOrState(model);
+            repo.CountPersonsCityAndState(model);
+            //repo.RetrevingDataBasedOnCityOrState(model);
+            //repo.RetrieveDataByCityOrState(model);
         }
     }
 }
