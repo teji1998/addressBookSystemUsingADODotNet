@@ -185,6 +185,10 @@ namespace addressBookSystem
             }
         }
 
+        /// <summary>
+        /// To retrieve data and give full details
+        /// </summary>
+        /// <param name="model"></param>
         public void RetrieveDataByCityOrState(AddressBookModel model)
         {
             SqlConnection connection = new SqlConnection();
@@ -238,7 +242,11 @@ namespace addressBookSystem
             }
         }
 
-        public void RetrevingDataBasedOnCityOrState(AddressBookModel model)
+        /// <summary>
+        /// Retrieving Data based on city or state
+        /// </summary>
+        /// <param name="model"></param>
+        public void RetrievingDataBasedOnCityOrState(AddressBookModel model)
         {
             try
             {
@@ -259,7 +267,7 @@ namespace addressBookSystem
                             model.LastName = dataReader.GetString(1);
                             model.City = dataReader.GetString(2);
                             model.State = dataReader.GetString(3);
-                            Console.WriteLine("{0},{1},{2},{3}",
+                            Console.WriteLine("FirstName : {0},\nLastName : {1},\nCity : {2},\nState : {3}",
                                  model.FirstName,model.LastName, model.City, model.State);
                             Console.WriteLine("\n");
                         }
@@ -283,6 +291,10 @@ namespace addressBookSystem
 
         }
 
+        /// <summary>
+        /// Counting persons on based on city or state
+        /// </summary>
+        /// <param name="addressModel"></param>
         public void CountPersonsCityAndState(AddressBookModel addressModel)
         {
             SqlConnection connection = new SqlConnection();
@@ -320,6 +332,52 @@ namespace addressBookSystem
             {
                 this.connection.Close();
             }
+        }
+
+        /// <summary>
+        /// Sorting the persons alphabetically
+        /// </summary>
+        /// <param name="model"></param>
+        public void SortByName(AddressBookModel model)
+        {
+            try
+            {
+                using (this.connection)
+                {
+                    SqlCommand command = new SqlCommand("spSortByName", this.connection);
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@City", model.City);
+                    this.connection.Open();
+                    SqlDataReader dataReader = command.ExecuteReader();
+                    if (dataReader.HasRows)
+                    {
+                        while (dataReader.Read())
+                        {
+                            model.FirstName = dataReader.GetString(0);
+                            model.LastName = dataReader.GetString(1);
+                            model.City = dataReader.GetString(2);
+                            Console.WriteLine("FirstName : {0},\nLastName : {1},\nCity : {2}",
+                                 model.FirstName, model.LastName,model.City);
+                            Console.WriteLine("\n");
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("No data found");
+                    }
+                    dataReader.Close();
+                    this.connection.Close();
+                }
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+            finally
+            {
+                this.connection.Close();
+            }
+
         }
 
     }

@@ -26,10 +26,11 @@ namespace addressBookSystem
             //repo.AddingDataOfPersonIntoDatabase(model);
             //repo.ObtainingDataFromDatabase();
             model.City = "Mumbai";
-            model.State = "Maharashtra";
-            repo.CountPersonsCityAndState(model);
+            //model.State = "Maharashtra";
+            //repo.CountPersonsCityAndState(model);
             //repo.RetrevingDataBasedOnCityOrState(model);
             //repo.RetrieveDataByCityOrState(model);
+            repo.SortByName(model);
         }
     }
 }
