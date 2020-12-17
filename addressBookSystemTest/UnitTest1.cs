@@ -29,5 +29,14 @@ namespace addressBookSystemTest
             Assert.IsTrue(result);
 
         }
+
+        [TestMethod]
+        public void givenDetails_WhenUpdatedInAddressBookTable_ShouldReturnTrue()
+        {
+            model.FirstName = "Lee";
+            model.Address = "Gangwon";
+            bool result = repo.UpdateDataOfPersonInDatabase(model);
+            Assert.IsTrue(result);
+        }
     }
 }
