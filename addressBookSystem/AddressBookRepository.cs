@@ -64,5 +64,43 @@ namespace addressBookSystem
                 this.connection.Close();
             }
         }
+
+        public bool AddingDataOfPersonIntoDatabase(AddressBookModel model)
+        {
+            try
+            {
+                using (this.connection)
+                {
+                    SqlCommand command = new SqlCommand("spAddingData", this.connection);
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@First_Name", model.FirstName);
+                    command.Parameters.AddWithValue("@Last_Name", model.LastName);
+                    command.Parameters.AddWithValue("@Address", model.Address);
+                    command.Parameters.AddWithValue("@City", model.City);
+                    command.Parameters.AddWithValue("@State", model.State);
+                    command.Parameters.AddWithValue("@Zip", model.Zip);
+                    command.Parameters.AddWithValue("@Mobile_Number", model.MobileNumber);
+                    command.Parameters.AddWithValue("@Email_Id", model.EmailId);
+                    command.Parameters.AddWithValue("@Address_Book_Name", model.AddressBookName);
+                    command.Parameters.AddWithValue("Type", model.Type);
+                    this.connection.Open();
+                    var result = command.ExecuteNonQuery();
+                    Console.WriteLine("Number of rows affected : " + result);
+                    if (!result.Equals(0))
+                    {
+                        return true;
+                    }
+                    return false;
+                }
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+            finally
+            {
+                this.connection.Close();
+            }
+        }
     }
 }
