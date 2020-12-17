@@ -17,6 +17,9 @@ namespace addressBookSystem
         public string EmailId { get; set; }
         public string AddressBookName { get; set; }
         public string Type { get; set; }
+        public string PersonType { get; set; }
+        public string PersonId { get; set; }
+        public string BookId { get; set; }
 
 
 
