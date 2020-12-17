@@ -9,6 +9,9 @@ namespace addressBookSystemTest
         AddressBookModel model = new AddressBookModel();
         AddressBookRepository repo = new AddressBookRepository();
 
+        /// <summary>
+        /// Given the details when added into address book table should return true.
+        /// </summary>
         [TestMethod]
         public void givenDetails_WhenAddedIntoAddressBookTable_ShouldReturnTrue()
         {
