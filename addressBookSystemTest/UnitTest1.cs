@@ -30,12 +30,26 @@ namespace addressBookSystemTest
 
         }
 
+        /// <summary>
+        /// Given the details when updated in address book table should return true.
+        /// </summary>
         [TestMethod]
         public void givenDetails_WhenUpdatedInAddressBookTable_ShouldReturnTrue()
         {
             model.FirstName = "Lee";
             model.Address = "Gangwon";
             bool result = repo.UpdateDataOfPersonInDatabase(model);
+            Assert.IsTrue(result);
+        }
+
+        /// <summary>
+        /// Given the first name when contact is deleted using it in address book table should return true.
+        /// </summary>
+        [TestMethod]
+        public void givenFirstName_WhenContactIsDeletedInAddressBookTable_ShouldReturnTrue()
+        {
+            model.FirstName = "Roopa";
+            bool result = repo.DeletePersonInDatabase(model);
             Assert.IsTrue(result);
         }
     }
