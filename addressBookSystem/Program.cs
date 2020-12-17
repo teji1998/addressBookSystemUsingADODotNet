@@ -25,12 +25,18 @@ namespace addressBookSystem
             //repo.UpdateDataOfPersonInDatabase(model);
             //repo.AddingDataOfPersonIntoDatabase(model);
             //repo.ObtainingDataFromDatabase();
-            model.City = "Mumbai";
+            // model.City = "Mumbai";
             //model.State = "Maharashtra";
             //repo.CountPersonsCityAndState(model);
             //repo.RetrevingDataBasedOnCityOrState(model);
             //repo.RetrieveDataByCityOrState(model);
-            repo.SortByName(model);
+            //repo.SortByName(model);
+         //   model.PersonType = "Friend";
+           // model.AddressBookName = "Friend_Address_Book";
+            //repo.AddingAddressbookTypeAndBookNameIntoTable(model);
+            model.PersonId = 17;
+            model.BookId = 4;
+            repo.AddPersonAndAddressBookData(model);
         }
     }
 }

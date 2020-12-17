@@ -18,8 +18,8 @@ namespace addressBookSystem
         public string AddressBookName { get; set; }
         public string Type { get; set; }
         public string PersonType { get; set; }
-        public string PersonId { get; set; }
-        public string BookId { get; set; }
+        public int PersonId { get; set; }
+        public int BookId { get; set; }
 
 
 

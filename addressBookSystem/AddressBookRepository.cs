@@ -380,5 +380,66 @@ namespace addressBookSystem
 
         }
 
+        public bool AddingAddressbookTypeAndBookNameIntoTable(AddressBookModel model)
+        {
+            try
+            {
+                using (this.connection)
+                {
+                    SqlCommand command = new SqlCommand("spAddressBookTypeInfo", this.connection);
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@person_Type", model.PersonType);
+                    command.Parameters.AddWithValue("@address_book_name", model.AddressBookName);
+                    this.connection.Open();
+                    var result = command.ExecuteNonQuery();
+                    Console.WriteLine("No of rows affected : " + result);
+                    if (!result.Equals(0))
+                    {
+                        return true;
+                    }
+                    return false;
+                }
+            }
+
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+            finally
+            {
+                this.connection.Close();
+            }
+        }
+
+        public bool AddPersonAndAddressBookData(AddressBookModel model)
+        {
+            try
+            {
+                using (this.connection)
+                {
+                    SqlCommand command = new SqlCommand("spPersonDepartmentInfo", this.connection);
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@Person_Id", model.PersonId);
+                    command.Parameters.AddWithValue("@Book_Id", model.BookId);
+                    this.connection.Open();
+                    var result = command.ExecuteNonQuery();
+                    Console.WriteLine("No of rows affected : " + result);
+                    if (!result.Equals(0))
+                    {
+                        return true;
+                    }
+                    return false;
+                }
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+            finally
+            {
+                this.connection.Close();
+            }
+        }
+
     }
 }
