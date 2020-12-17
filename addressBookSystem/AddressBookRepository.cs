@@ -108,6 +108,11 @@ namespace addressBookSystem
             }
         }
 
+        /// <summary>
+        /// To update person in database
+        /// </summary>
+        /// <param name="addressModel"></param>
+        /// <returns></returns>
         public bool UpdateDataOfPersonInDatabase(AddressBookModel addressModel)
         {
             SqlConnection connection = new SqlConnection(connectionString);
@@ -119,6 +124,44 @@ namespace addressBookSystem
                     command.CommandType = CommandType.StoredProcedure;
                     command.Parameters.AddWithValue("@First_Name", addressModel.FirstName);
                     command.Parameters.AddWithValue("@Address", addressModel.Address);
+                    this.connection.Open();
+                    var result = command.ExecuteNonQuery();
+                    Console.WriteLine("Number of rows affected : " + result);
+                    if (result != 0)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+
+        /// <summary>
+        /// To delete a person's details
+        /// </summary>
+        /// <param name="addressModel"></param>
+        /// <returns></returns>
+        public bool DeletePersonInDatabase(AddressBookModel addressModel)
+        {
+            SqlConnection connection = new SqlConnection(connectionString);
+            try
+            {
+                using (connection)
+                {
+                    SqlCommand command = new SqlCommand("spDeletingPersonData", this.connection);
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@First_Name", addressModel.FirstName);
                     this.connection.Open();
                     var result = command.ExecuteNonQuery();
                     Console.WriteLine("Number of rows affected : " + result);

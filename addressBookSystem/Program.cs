@@ -19,11 +19,11 @@ namespace addressBookSystem
             model.EmailId = "bhagya1997@yahoo.com";
             model.AddressBookName = "B";
             model.Type = "Friend";*/
-            model.FirstName = "Tejaswini";
-            model.Address = "LottePark";
+            model.FirstName = "Varun";
+            repo.DeletePersonInDatabase(model);
             //repo.UpdateDataOfPersonInDatabase(model);
             //repo.AddingDataOfPersonIntoDatabase(model);
-            repo.ObtainingDataFromDatabase();
+            //repo.ObtainingDataFromDatabase();
         }
     }
 }
