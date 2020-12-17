@@ -11,6 +11,9 @@ namespace addressBookSystem
         public static string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Address_Book_Service;Integrated Security=True";
         SqlConnection connection = new SqlConnection(connectionString);
 
+        /// <summary>
+        /// Obtaining data from database
+        /// </summary>
         public void ObtainingDataFromDatabase()
         {
             try
