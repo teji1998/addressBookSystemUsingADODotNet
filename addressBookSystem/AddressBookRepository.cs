@@ -16,6 +16,7 @@ namespace addressBookSystem
         /// </summary>
         public void ObtainingDataFromDatabase()
         {
+            SqlConnection connection = new SqlConnection(connectionString);
             try
             {
                 AddressBookModel model = new AddressBookModel();
@@ -72,6 +73,7 @@ namespace addressBookSystem
         /// <returns></returns>
         public bool AddingDataOfPersonIntoDatabase(AddressBookModel model)
         {
+            SqlConnection connection = new SqlConnection(connectionString);
             try
             {
                 using (this.connection)
@@ -191,7 +193,7 @@ namespace addressBookSystem
         /// <param name="model"></param>
         public void RetrieveDataByCityOrState(AddressBookModel model)
         {
-            SqlConnection connection = new SqlConnection();
+            SqlConnection connection = new SqlConnection(connectionString);
             try
             {
                 using (connection)
@@ -248,6 +250,7 @@ namespace addressBookSystem
         /// <param name="model"></param>
         public void RetrievingDataBasedOnCityOrState(AddressBookModel model)
         {
+            SqlConnection connection = new SqlConnection(connectionString);
             try
             {
                 using (this.connection)
@@ -297,7 +300,7 @@ namespace addressBookSystem
         /// <param name="addressModel"></param>
         public void CountPersonsCityAndState(AddressBookModel addressModel)
         {
-            SqlConnection connection = new SqlConnection();
+            SqlConnection connection = new SqlConnection(connectionString);
             try
             {
                 using (connection)
@@ -340,6 +343,7 @@ namespace addressBookSystem
         /// <param name="model"></param>
         public void SortByName(AddressBookModel model)
         {
+            SqlConnection connection = new SqlConnection(connectionString);
             try
             {
                 using (this.connection)
@@ -387,6 +391,7 @@ namespace addressBookSystem
         /// <returns></returns>
         public bool AddingAddressbookTypeAndBookNameIntoTable(AddressBookModel model)
         {
+            SqlConnection connection = new SqlConnection(connectionString);
             try
             {
                 using (this.connection)
@@ -423,6 +428,7 @@ namespace addressBookSystem
         /// <returns></returns>
         public bool AddPersonAndAddressBookData(AddressBookModel model)
         {
+            SqlConnection connection = new SqlConnection(connectionString);
             try
             {
                 using (this.connection)
@@ -456,6 +462,7 @@ namespace addressBookSystem
         /// </summary>
         public void CountByPersonType()
         {
+            SqlConnection connection = new SqlConnection(connectionString);
             try
             {
                 AddressBookModel model = new AddressBookModel();
