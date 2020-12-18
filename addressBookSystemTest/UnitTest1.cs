@@ -53,6 +53,9 @@ namespace addressBookSystemTest
             Assert.IsTrue(result);
         }
 
+        /// <summary>
+        /// Given the person type and address book name when added into table should return true.
+        /// </summary>
         [TestMethod]
         public void givenPersonTypeAndAddressBookName_WhenAddedIntoTable_ShouldReturnTrue()
         {
@@ -62,11 +65,26 @@ namespace addressBookSystemTest
             Assert.IsTrue(result);
         }
 
+        /// <summary>
+        /// Given the person identifier and book identifier when entered into table should return true.
+        /// </summary>
         [TestMethod]
-        public void AddingRelationShipTypeToPerson_ShouldReturnTrue()
+        public void givenPersonIdAndBookId_WhenEnteredIntoTableShouldReturnTrue()
         {
             model.PersonId = 13;
             model.BookId = 5;
+            bool result = repo.AddPersonAndAddressBookData(model);
+            Assert.IsTrue(result);
+        }
+
+        /// <summary>
+        /// Givens the person identifier when entered in multiple book should return true.
+        /// </summary>
+        [TestMethod]
+        public void givenPersonId_WhenEnteredInMultipleBook_ShouldReturnTrue()
+        {
+            model.PersonId = 13;
+            model.BookId = 4;
             bool result = repo.AddPersonAndAddressBookData(model);
             Assert.IsTrue(result);
         }
