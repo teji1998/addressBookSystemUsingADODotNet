@@ -52,5 +52,23 @@ namespace addressBookSystemTest
             bool result = repo.DeletePersonInDatabase(model);
             Assert.IsTrue(result);
         }
+
+        [TestMethod]
+        public void givenPersonTypeAndAddressBookName_WhenAddedIntoTable_ShouldReturnTrue()
+        {
+            model.PersonType = "Family";
+            model.AddressBookName = "Family_Address_Book";
+            bool result = repo.AddingAddressbookTypeAndBookNameIntoTable(model);
+            Assert.IsTrue(result);
+        }
+
+        [TestMethod]
+        public void AddingRelationShipTypeToPerson_ShouldReturnTrue()
+        {
+            model.PersonId = 13;
+            model.BookId = 5;
+            bool result = repo.AddPersonAndAddressBookData(model);
+            Assert.IsTrue(result);
+        }
     }
 }

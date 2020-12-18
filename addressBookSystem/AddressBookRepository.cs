@@ -380,6 +380,11 @@ namespace addressBookSystem
 
         }
 
+        /// <summary>
+        /// Added values of person type and addressbook name
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         public bool AddingAddressbookTypeAndBookNameIntoTable(AddressBookModel model)
         {
             try
@@ -411,6 +416,11 @@ namespace addressBookSystem
             }
         }
 
+        /// <summary>
+        /// Added Values for relation between person and addressbook
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         public bool AddPersonAndAddressBookData(AddressBookModel model)
         {
             try
