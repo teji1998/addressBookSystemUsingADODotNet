@@ -451,5 +451,48 @@ namespace addressBookSystem
             }
         }
 
+        /// <summary>
+        /// To get the count of persons by type
+        /// </summary>
+        public void CountByPersonType()
+        {
+            try
+            {
+                AddressBookModel model = new AddressBookModel();
+                using (this.connection)
+                {
+                    SqlCommand command = new SqlCommand("spCountByType", this.connection);
+                    command.CommandType = CommandType.StoredProcedure;
+                    this.connection.Open();
+                    SqlDataReader dataReader = command.ExecuteReader();
+                    if (dataReader.HasRows)
+                    {
+                        while (dataReader.Read())
+                        {
+                           int count = dataReader.GetInt32(0);
+                            model.BookId = dataReader.GetInt32(1);
+                            Console.WriteLine("Count : {0}\nBook_id : {1}",
+                                 count,model.BookId);
+                            Console.WriteLine("\n");
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("No data found");
+                    }
+                    dataReader.Close();
+                    this.connection.Close();
+                }
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+            finally
+            {
+                this.connection.Close();
+            }
+        }
+
     }
 }

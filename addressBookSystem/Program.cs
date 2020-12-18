@@ -31,12 +31,13 @@ namespace addressBookSystem
             //repo.RetrevingDataBasedOnCityOrState(model);
             //repo.RetrieveDataByCityOrState(model);
             //repo.SortByName(model);
-         //   model.PersonType = "Friend";
-           // model.AddressBookName = "Friend_Address_Book";
+            //   model.PersonType = "Friend";
+            // model.AddressBookName = "Friend_Address_Book";
             //repo.AddingAddressbookTypeAndBookNameIntoTable(model);
-            model.PersonId = 17;
+            /*model.PersonId = 17;
             model.BookId = 4;
-            repo.AddPersonAndAddressBookData(model);
+            repo.AddPersonAndAddressBookData(model);*/
+            repo.CountByPersonType();
         }
     }
 }
